@@ -20,22 +20,22 @@ damages resulting from the authorized or unauthorized use of the software.
 
 ## Installation and Dependencies
 
-To install this function:
+### To install this function:
 
 Download mLS.m and add it to your matlab path
 
 
-This package also requires the following packages: 
+### This package also requires the following packages: 
 
-* plfit
+#### plfit
 
 mLS uses the plfit function of Clauset et al.(2009) to determine both the power-law exponent (beta)
 and the cutoff value of the power-law. The plfit function can be downloaded from the following link: 
 [http://www.santafe.edu/~aaronc/powerlaws/](http://www.santafe.edu/~aaronc/powerlaws/)
 
-Add the plfit function to your path or place it in the same folder from which mLS is run
+Add the plfit function to your path
 
-* EzyFit
+#### EzyFit
 
 mLS also uses a curve fitting toolbox, EzyFit. The 
 referred toolbox needs to be downloaded from the following link: 
