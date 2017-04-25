@@ -117,4 +117,7 @@ set(get(gca,'Xlabel'),'string','Landslide Area (m^2)','FontSize',12, 'FontUnits'
 set(get(gca,'Ylabel'),'string','Frequency Density (m^-^2)','FontSize',12, 'FontUnits','points','FontWeight','normal')
 text(midx*2,midy*2,['\beta = ',num2str(beta),' and mLS = ',num2str(mLS)],'FontSize',10);
 end
+
+% As an output of this code the following plot is obtained. 
+![sample_data_output](https://cloud.githubusercontent.com/assets/27958392/25407778/e98c1da8-2a0b-11e7-8c16-3ab98864a90b.png)
 ```
