@@ -118,5 +118,8 @@ set(get(gca,'Ylabel'),'string','Frequency Density (m^-^2)','FontSize',12, 'FontU
 text(midx*2,midy*2,['\beta = ',num2str(beta),' and mLS = ',num2str(mLS)],'FontSize',10);
 end
 
-% For the given sample data, the corresponding cutoff (smallest area that follows power law), beta (power-law exponent), and mLS (landslide % magnitude) values should be appeared as 9234, -2.46, and 3.4988 respectively. As an output of this code, a plot showing the frequency-area % distribution of the given landslides and the corresponding power-law fit should be also obtained.
+% For the given sample data, the corresponding cutoff (smallest area that follows power law), 
+% beta (power-law exponent), and mLS (landslide magnitude) values should be appeared as 
+% 9234, -2.46, and 3.4988 respectively. As an output of this code, a plot showing the frequency-area
+% distribution of the given landslides and the corresponding power-law fit should be also obtained.
 ```
