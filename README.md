@@ -45,7 +45,7 @@ the toolbox (the explanation given below was taken from the cited website):
    2. Select 'Set Path' (available in the menu File in Matlab 7, or in the tab Home in Matlab 8). In the dialog box, click on 'Add Folder' (NOT 'with subfolders') and select the ezyfit directory. Click on 'Save' and 'Close'.
 
 
-## Usage example
+## Usage example (from mLS.m)
 
 ```
 % Upload the landslide areas, which you want to analyze its frequency-area 
@@ -118,6 +118,4 @@ set(get(gca,'Ylabel'),'string','Frequency Density (m^-^2)','FontSize',12, 'FontU
 text(midx*2,midy*2,['\beta = ',num2str(beta),' and mLS = ',num2str(mLS)],'FontSize',10);
 end
 
-% As an output of this code the following plot is obtained. 
-![sample_data_output](https://cloud.githubusercontent.com/assets/27958392/25407778/e98c1da8-2a0b-11e7-8c16-3ab98864a90b.png)
 ```
