@@ -125,4 +125,3 @@ end
 ```
 
 ![img1](sample_data_output.png)
-Format: ![Alt Text](url)
