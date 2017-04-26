@@ -25,7 +25,7 @@
 % cutoff (smallest area that follows power law), beta (power-law exponent), and 
 % mLS (landslide magnitude) values will be obtained. As an output of this code, 
 % a plot showing the frequency-area distribution of the given landslides and 
-% the corresponding power-law fit should be also obtained.
+% the corresponding power-law fit are also obtained.
 
 function [cutoff,beta,mLS]=mLS(Area)
 
