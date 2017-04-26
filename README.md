@@ -123,3 +123,5 @@ end
 % 9234, -2.46, and 3.4988 respectively. As an output of this code, a plot showing the frequency-area
 % distribution of the given landslides and the corresponding power-law fit should be also obtained.
 ```
+
+[img1]:sample_data_output.png "Figure output of example code"
