@@ -7,7 +7,6 @@ following the methods of Tanyas and others (in prep). The function plots the bes
 and large landslides and the frequency-area distribution of the analyzed inventory. It also returns the corresponding
 cutoff (smallest area that follows power law), beta (power-law exponent), and mLS (landslide magnitude) values.
 
-
 *Disclaimer:* This software is preliminary or provisional and is subject to 
 revision. It is being provided to meet the need for timely best science. The 
 software has not received final approval by the U.S. Geological Survey (USGS).
@@ -125,3 +124,9 @@ end
 ```
 
 ![img1](sample_data_output.png)
+
+## References
+
+Clauset, A., Shalizi, C.R. and Newman, M.E., 2009. Power-law distributions in empirical data. SIAM review, 51(4): 661-703. DOI:10.1137/070710111
+
+Tanyas, H., Allstadt, K.E., and van Westen, C.J. (in prep) Quantitative estimation of the magnitude of landslide triggering events (for submission to Earth Surface Processes and Landforms).
