@@ -19,11 +19,13 @@
 % (NOT 'with subfolders') and select the ezyfit directory. 
 % Click on 'Save' and 'Close'.
 
-% An array (Area) with landslide sizes is the only input parameter in this
-% script. This script plots the best power-law fit for the medium and
-% large landslides exisiting in the analyzed inventory in addition to 
-% frequency-area distribution of inventory. The corresponding beta and mLS
-% values are estimated as well.
+% A horizontal array (Area) with landslide sizes, which you want to analyze
+% their frequency-area distribution, is the only input parameter in this script.
+% When you run the mLS function, for the given sample data, the corresponding 
+% cutoff (smallest area that follows power law), beta (power-law exponent), and 
+% mLS (landslide magnitude) values will be obtained. As an output of this code, 
+% a plot showing the frequency-area distribution of the given landslides and 
+% the corresponding power-law fit are also obtained.
 
 function [cutoff,beta,mLS]=mLS(Area)
 
@@ -81,6 +83,9 @@ a2=Nmidy/(10000*Nmidx^-2.5); % mLS is taken as 4 for the Northridge inventory
 as=Nmidy/(10000*Nmidx^beta);
 
 mLS=log10((midy/(as*midx^(beta)))); % mLS is calculated in this line
+
+% A graph showing the frequency-area distribution of the given landslides 
+% and the corresponding power-law fit are plotted.
 
 loglog(x1,fit_y,'-','LineWidth',2,'Color','r');hold on
 loglog(x1,FD,'ok')
