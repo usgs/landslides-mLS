@@ -124,4 +124,5 @@ end
 % the corresponding power-law fit is also output, see image below.
 ```
 
-[img1](sample_data_output.png)
+![img1](sample_data_output.png)
+Format: ![Alt Text](url)
