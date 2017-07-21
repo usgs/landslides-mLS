@@ -1,33 +1,20 @@
 % This script is provided for the accurate estimation of landslide-event
-% magnitude. Within this script the plfit function of Clauset et al.(2009)
-% is used to determine both power-law exponent (beta) and cutoff value of 
-% the power-law. Therefore, the original script of Clauset et al. (2009)
-% has to be obtained by the user. The plfit function can be downloaded 
-% from the following link: 
+% magnitude. This script requires three input parameters: cutoff 
+% (smallest area that follows power law) and beta (power-law exponent) 
+% values of Frequency-size distribution of landslides, % and a horizontal 
+% array (Area) with landslide sizes.   
+
+% To obtain the cutoff and beta values the method suggested by Clauset 
+% et al.(2009) should be used. The original script of Clauset et al. (2009)
+% can be downloaded from the following link to calculate these parameters: 
 % http://www.santafe.edu/~aaronc/powerlaws/ 
 
-% Within the code we also used a curve fitting toolbox, EzyFit. The 
-% referred toolbox needs to be downloaded from the following link: 
-% http://www.fast.u-psud.fr/ezyfit/ and follow the given steps to intall
-% the toolbox (the explanation given below was taken from the cited website):
-%    1- Download and unzip the EzyFit Toolbox in a directory somewhere in 
-% your system. For instance, in a Windows installation, the directory 
-% Documents/MATLAB/ezyfit may be a good location. Do NOT install the toolbox
-% in the Matlab directory itself (Program Files/Matlab directory in Windows). 
-%    2- Select 'Set Path' (available in the menu File in Matlab 7, 
-% or in the tab Home in Matlab 8). In the dialog box, click on 'Add Folder' 
-% (NOT 'with subfolders') and select the ezyfit directory. 
-% Click on 'Save' and 'Close'.
-
-% A horizontal array (Area) with landslide sizes, which you want to analyze
-% their frequency-area distribution, is the only input parameter in this script.
 % When you run the mLS function, for the given sample data, the corresponding 
-% cutoff (smallest area that follows power law), beta (power-law exponent), and 
-% mLS (landslide magnitude) values will be obtained. As an output of this code, 
+% mLS (landslide-event magnitude) will be obtained. As an output of this code, 
 % a plot showing the frequency-area distribution of the given landslides and 
 % the corresponding power-law fit are also obtained.
 
-function [cutoff,beta,mLS]=mLS(Area)
+function [mLS]=mLS(Area,cutoff,beta)
 
 % In the following lines, the bins are defined with an array. We took 2 as 
 % the minimum bin size and we used increasing bin sizes. We increase the 
@@ -50,38 +37,27 @@ end
 int(1,1)=min(x1);
 FD=Freq./int;
 
-[beta, cutoff]= plfit(Area); % beta and cutoff values are calculated 
-beta=-1*beta;
-
 tmpm1 = abs(x1-cutoff); % the index values for the mid-point is calculated for the inventory  
 [idxm1 idxm1] = min(tmpm1);
 
-for i=120:-1:1
-    if Freq(1,i)>2
-        idxm2=i;
-        break;
-    end
+x=x1(idxm1:end);
+y=FD(idxm1:end);
+
+if beta>0           % beta value have to be negative
+    beta=-1*beta;
 end
 
-x=x1(idxm1:idxm2);
-y=FD(idxm1:idxm2);
+constant=y(1,1)/cutoff^beta;     % The c constant is calculated along the power-low where x=cutoff
+fit_y=constant*x1.^beta;        % Frequency-density values calculated for the defined power-law fit
 
-loglog(x,y,'o');
-
-lastfit=showfit(['a*x^(',num2str(beta),')']); % The c constant is read by using ezyfit toolbox
-constant=lastfit.m; hold on
-fit_y=constant*x1.^beta;
-
-idxm=(idxm1+idxm2)/2; % The x and y values at mid-point location is read
-idxm=round(idxm);
-midx=x1(1,idxm);
+midx=10^((log10(max(Area))+(log10(cutoff)))/2);     % The x and y values at mid-point location is read along the power-law fit
 midy=constant*midx^beta;
 
-Nmidx=27268.11605; % The c' constant is calculated here for by taking the mid-point of Northridge inventory as a reference point
-Nmidy=0.004065932702716;
-a2=Nmidy/(10000*Nmidx^-2.5); % mLS is taken as 4 for the Northridge inventory
-as=Nmidy/(10000*Nmidx^beta);
-
+Nmidx=2.503413777225013e+04; % T
+Nmidy=0.005717876265502;
+as=Nmidy/(23559*Nmidx^beta); % he c' constant (as) is calculated here for by taking the mid-point of 
+                             % the Haiti inventory as a reference point where mLS=log(23559)=4.37 
+                             
 mLS=log10((midy/(as*midx^(beta)))); % mLS is calculated in this line
 
 % A graph showing the frequency-area distribution of the given landslides 
@@ -92,5 +68,6 @@ loglog(x1,FD,'ok')
 axis([1 1.E+7 1.E-6 1000])
 set(get(gca,'Xlabel'),'string','Landslide Area (m^2)','FontSize',12, 'FontUnits','points','FontWeight','normal')
 set(get(gca,'Ylabel'),'string','Frequency Density (m^-^2)','FontSize',12, 'FontUnits','points','FontWeight','normal')
-text(midx*2,midy*2,['\beta = ',num2str(beta),' and mLS = ',num2str(mLS)],'FontSize',10);
+str={['\beta = ',num2str(beta)];['mLS = ',num2str(mLS)]};
+text(midx*2,midy*2,str)
 end
