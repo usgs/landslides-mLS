@@ -51,19 +51,19 @@ x2=log10(x1);
 Freq=histc(Area,x1); %Frequency values are calculated for each bin 
 s=size(x1);
 s=s(1,2);
-int=zeros(1,s);
+internal=zeros(1,s);
 
 for i=2:s
-     int(1,i)=x1(1,i)-x1(1,i-1);
+     internal(1,i)=x1(1,i)-x1(1,i-1);
 end
-int(1,1)=min(x1);
-FD=Freq./int;
+internal(1,1)=min(x1);
+FD=Freq./internal;
 
-tmpm1 = abs(x1-cutoff); % the index values for the mid-point is calculated for the inventory  
-[idxm1 idxm1] = min(tmpm1);
+x1_rev = abs(x1-cutoff); % the index of value that is closest to cutoff value is identified along the x1 array 
+[indexMidpoint indexMidpoint] = min(x1_rev);
 
-x=x1(idxm1:end);
-y=FD(idxm1:end);
+x=x1(indexMidpoint:end);  % the x (size bines) array for the frequeny-size distribution is defined 
+y=FD(indexMidpoint:end);  % the y (frequency densities) array for the frequeny-size distribution is defined 
 
 if beta>0           % beta value have to be negative
     beta=-1*beta;
@@ -75,12 +75,12 @@ fit_y=constant*x1.^beta;        % Frequency-density values calculated for the de
 midx=10^((log10(max(Area))+(log10(cutoff)))/2);     % The x and y values at mid-point location is read along the power-law fit
 midy=constant*midx^beta;
 
-Nmidx=2.503413777225013e+04;    % X value for the mid point of the Haiti inventory
-Nmidy=0.005717876265502;        % Y value for the mid point of the Haiti inventory
-as=Nmidy/(23559*Nmidx^beta); % he c' constant (as) is calculated here for the mid-point of 
-                             % the Haiti inventory as a reference point where mLS=log(23559)=4.37 
+Refmidx=2.503413777225013e+04;    % X value for the mid point of the Haiti (reference point) inventory
+Refmidy=0.005717876265502;        % Y value for the mid point of the Haiti (reference point) inventory
+ac=Refmidy/(23559*Refmidx^beta);  % he c' constant (as) is calculated here for the mid-point of 
+                                  % the Haiti inventory as a reference point where mLS=log(23559)=4.37 
                              
-mLS=log10((midy/(as*midx^(beta)))); % mLS is calculated in this line
+mLS=log10((midy/(ac*midx^(beta)))); % mLS is calculated in this line
 
 % A graph showing the frequency-area distribution of the given landslides 
 % and the corresponding power-law fit are plotted.
@@ -105,4 +105,10 @@ text(midx*2,midy*2,str)
 
 Clauset, A., Shalizi, C.R. and Newman, M.E., 2009. Power-law distributions in empirical data. SIAM review, 51(4): 661-703. DOI:10.1137/070710111
 
-Tanyas, H., Allstadt, K.E., and van Westen, C.J. (in prep) Quantitative estimation of the magnitude of landslide triggering events (for submission to Earth Surface Processes and Landforms).
+Guzzetti, F., Malamud, B.D., Turcotte, D.L. and Reichenbach, P., 2002. Power-law correlations of landslide areas in central Italy. Earth and Planetary Science Letters, 195(3): 169-183. DOI:10.1016/S0012-821X(01)00589-1
+
+Stark, C.P. and Guzzetti, F., 2009. Landslide rupture and the probability distribution of mobilized debris volumes. Journal of Geophysical Research: Earth Surface, 114(F2). DOI:10.1029/2008JF001008
+
+Tanyas, H., Allstadt, K.E., and van Westen, C.J. (in prep) New method for estimation of landslide-event magnitude based on large dataset of earthquake-induced landslides (for submission to Earth Surface Processes and Landforms).
+
+Van Den Eeckhaut, M., Poesen, J., Govers, G., Verstraeten, G. and Demoulin, A., 2007. Characteristics of the size distribution of recent and historical landslides in a populated hilly region. Earth and Planetary Science Letters, 256(3): 588-603. DOI:10.1016/j.epsl.2007.01.040
