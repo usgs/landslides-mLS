@@ -5,7 +5,7 @@
 % following paper:
 % The entire link will be given when the paper will be ready to publish.
 
-% The Pupose Of The Script And The Input Parametes 
+% The Purpose Of The Script And The Input Parameters 
 % This script is provided for the accurate estimation of landslide-event
 % magnitude. We used Matlab R2015b to test the given script. It requires 
 % three input parameters: cutoff (smallest area that follows power law) 
