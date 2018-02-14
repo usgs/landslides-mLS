@@ -5,7 +5,7 @@
 mLS is a function that estimates the landslide magnitude (mLS) from cutoff 
 (smallest area that follows power law), beta (power-law exponent), and an 
 array of areas derived from a landslide inventory following the methods of 
-Tanyas and others (in prep). It can also calculate the uncertainty in 
+Tanyas and others (2018). It can also calculate the uncertainty in 
 landslide-event magnitude if uncertainties in cutoff and beta values are 
 given as input parameters. The function plots the best power-law fit for 
 the medium and large landslides and the frequency-area distribution of the 
