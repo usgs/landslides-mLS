@@ -3,10 +3,9 @@
 % method followed in the given script is described in the corresponding 
 % paper. If you publish use this script or a its modified version please 
 % cite the following paper:
-% Tanyas, H., K.E. Allstadt, and C.J. van Westen (in press), 
+% Tanyas, H., K.E. Allstadt, and C.J. van Westen, 2018, 
 % An updated method for estimating landslide-event magnitude, Earth Surface 
-% Processes and Landforms.
-% The entire link will be given when the paper will be ready to publish.
+% Processes and Landforms. DOI: 10.1002/esp.4359
 
 % The Pupose Of The Script And The Input Parametes 
 % This script is provided for the accurate estimation of landslide-event
@@ -30,7 +29,7 @@
 % Beta value resfers to the slope of the frequency-size distribution. It also
 % called as power-law exponent (scaling parameter, beta). For most landslide
 % inventories, non-cumulative power-law exponents occur in the range of 
-% 1.4–3.4, with a central tendency of 2.3–2.5 (Stark and Guzzetti, 2009;
+% 1.4â€“3.4, with a central tendency of 2.3â€“2.5 (Stark and Guzzetti, 2009;
 % Van Den Eeckhaut et al., 2007).
 
 % The unit of landslide sizes are in meter square.
